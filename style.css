@@ -1,0 +1,28 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background-color: #0f172a; color: #f8fafc; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 15px; }
+.game-container { width: 100%; max-width: 420px; }
+.card { background: #1e293b; padding: 22px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); text-align: center; border: 1px solid #334155; }
+h2 { margin-bottom: 12px; font-size: 20px; color: #f1f5f9; }
+.input-group, .setting-item { margin-bottom: 12px; text-align: right; }
+.setting-item label { display: block; font-size: 14px; margin-bottom: 4px; color: #cbd5e1; }
+input, select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: #fff; text-align: center; outline: none; font-size: 14px; }
+.btn { width: 100%; padding: 10px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 6px; }
+.btn-primary { background: #0284c7; color: white; }
+.btn-secondary { background: #475569; color: white; }
+.btn-success { background: #16a34a; color: white; }
+.divider { margin: 10px 0; color: #94a3b8; font-size: 13px; }
+.room-code-box { font-size: 28px; font-weight: bold; letter-spacing: 3px; color: #38bdf8; background: #0f172a; padding: 8px; border-radius: 8px; margin: 8px 0; border: 2px dashed #38bdf8; }
+.players-list { list-style: none; margin: 10px 0; max-height: 120px; overflow-y: auto; }
+.players-list li { background: #334155; padding: 6px 10px; margin-bottom: 4px; border-radius: 6px; }
+.timer-box { font-size: 18px; font-weight: bold; color: #facc15; background: #0f172a; padding: 8px; border-radius: 8px; margin-bottom: 12px; }
+.role-card { background: #334155; padding: 10px; border-radius: 8px; margin-bottom: 12px; }
+.announcement-box { background: #7c2d12; color: #fef08a; padding: 10px; border-radius: 8px; margin-bottom: 12px; font-weight: bold; font-size: 13px; }
+.action-area { margin-bottom: 15px; }
+.action-area h4 { margin-bottom: 8px; font-size: 14px; color: #38bdf8; }
+.chat-section { margin-top: 15px; border-top: 1px solid #334155; padding-top: 10px; }
+.chat-messages { height: 120px; background: #0f172a; border-radius: 8px; padding: 8px; overflow-y: auto; text-align: right; margin-bottom: 8px; font-size: 13px; }
+.chat-msg { margin-bottom: 4px; }
+.chat-msg span { font-weight: bold; color: #38bdf8; }
+.chat-input-group { display: flex; gap: 5px; }
+.chat-input-group input { text-align: right; }
+.chat-input-group button { width: auto; padding: 0 15px; margin: 0; }

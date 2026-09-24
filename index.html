@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة المافيا الاحترافية</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body>
+
+    <div class="game-container">
+        <!-- شاشة 1: الدخول -->
+        <div id="authScreen" class="card">
+            <h2>🎭 لعبة المافيا</h2>
+            <div class="input-group">
+                <input type="text" id="playerNameInput" placeholder="ادخل اسمك هنا..." />
+            </div>
+            <button id="btnCreateRoom" class="btn btn-primary">إنشاء غرفة جديدة</button>
+            <div class="divider">أو</div>
+            <div class="input-group">
+                <input type="text" id="roomCodeInput" placeholder="رمز الغرفة (4 أرقام)" maxlength="4" />
+            </div>
+            <button id="btnJoinRoom" class="btn btn-secondary">الانضمام لغرفة</button>
+        </div>
+
+        <!-- شاشة 2: الإعدادات التفاعلية -->
+        <div id="settingsScreen" class="card" style="display: none;">
+            <h2>⚙️ إعدادات الجولة</h2>
+            
+            <div class="setting-item">
+                <label>⏱️ وقت النهار والنقاش:</label>
+                <select id="dayTimeSelect">
+                    <option value="30">30 ثانية</option>
+                    <option value="60" selected>60 ثانية (موصى به)</option>
+                    <option value="90">90 ثانية</option>
+                    <option value="120">2 دقيقة</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <label>🌙 وقت الليل (تنفيذ المهام):</label>
+                <select id="nightTimeSelect">
+                    <option value="15">15 ثانية</option>
+                    <option value="30" selected>30 ثانية</option>
+                    <option value="45">45 ثانية</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <label>🗳️ وقت التصويت:</label>
+                <select id="voteTimeSelect">
+                    <option value="15">15 ثانية</option>
+                    <option value="30" selected>30 ثانية</option>
+                    <option value="45">45 ثانية</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <label>🎭 نظام توزيع الأدوار:</label>
+                <select id="roleSystemSelect">
+                    <option value="auto" selected>تلقائي (حسب عدد اللاعبين الأصلي)</option>
+                    <option value="custom">توزيع حر (تحديد عدد المافيا)</option>
+                </select>
+            </div>
+
+            <div id="customMafiaArea" class="setting-item" style="display: none;">
+                <label>عدد المافيا:</label>
+                <select id="mafiaSelect">
+                    <option value="1">1 مافيا</option>
+                    <option value="2">2 مافيا</option>
+                    <option value="3">3 مافيا</option>
+                </select>
+            </div>
+
+            <button id="btnSaveSettings" class="btn btn-primary">الانتقال لغرفة الانتظار ➡️</button>
+        </div>
+
+        <!-- شاشة 3: غرفة الانتظار -->
+        <div id="lobbyScreen" class="card" style="display: none;">
+            <h2>رمز الغرفة الخاص بك:</h2>
+            <div id="displayRoomCode" class="room-code-box">----</div>
+            <p>اللاعبون المتواجدون حالياً:</p>
+            <ul id="playersList" class="players-list"></ul>
+            <button id="btnStartGame" class="btn btn-success" style="display: none;">بدء اللعبة الآن 🚀</button>
+        </div>
+
+        <!-- شاشة 4: اللعب الرئيسية -->
+        <div id="gameScreen" class="card" style="display: none;">
+            <h2 id="phaseDisplay">مرحلة اللعب</h2>
+            <div id="timerDisplay" class="timer-box">الوقت المتبقي: --</div>
+            
+            <div class="role-card">
+                <span>دورك السري:</span>
+                <h3 id="myRoleDisplay">❓ جاري التحميل...</h3>
+            </div>
+
+            <div id="announcementBox" class="announcement-box" style="display:none;"></div>
+
+            <!-- منطقة أزرار التفاعل المباشر لأصحاب المهام -->
+            <div id="actionArea" class="action-area"></div>
+
+            <div id="chatSection" class="chat-section" style="display:none;">
+                <div id="chatMessages" class="chat-messages"></div>
+                <div class="chat-input-group">
+                    <input type="text" id="chatInput" placeholder="اكتب رسالتك للنقاش..." />
+                    <button id="btnSendChat" class="btn btn-primary">إرسال</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
